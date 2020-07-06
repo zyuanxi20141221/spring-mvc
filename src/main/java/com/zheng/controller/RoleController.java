@@ -24,6 +24,7 @@ public class RoleController {
 
     @RequestMapping("/save")
     public String save(Role role) {
+        System.out.println("role=" + role);
         roleService.save(role);
         return "redirect:/role/list";
     }

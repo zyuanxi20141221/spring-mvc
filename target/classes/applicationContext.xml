@@ -23,9 +23,7 @@
     </bean>
 
     <!--配置RoleService-->
-    <bean id="roleService" class="com.zheng.service.impl.RoleServiceImpl">
-        <property name="roleDao" ref="roleDao"/>
-    </bean>
+    <bean id="roleService" class="com.zheng.service.impl.RoleServiceImpl" />
 
     <!--配置RoleDao-->
     <bean id="roleDao" class="com.zheng.dao.impl.RoleDaoImpl">
@@ -33,10 +31,7 @@
     </bean>
 
     <!--配置UserService-->
-    <bean id="userService" class="com.zheng.service.impl.UserServiceImpl">
-        <property name="userDao" ref="userDao"/>
-        <property name="roleDao" ref="roleDao"/>
-    </bean>
+    <bean id="userService" class="com.zheng.service.impl.UserServiceImpl" />
 
     <!--配置UserDao-->
     <bean id="userDao" class="com.zheng.dao.impl.UserDaoImpl">

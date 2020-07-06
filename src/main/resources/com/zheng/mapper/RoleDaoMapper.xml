@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.zheng.mapper.RoleMapper">
+<mapper namespace="com.zheng.mapper.RoleDaoMapper">
 
     <select id="findAll" resultType="com.zheng.domain.Role">
          select * from sys_role
     </select>
-    
+
     <insert id="save" parameterType="com.zheng.domain.Role">
         insert into sys_role values(#{id}, #{roleName}, #{roleDesc})
     </insert>
@@ -14,5 +14,9 @@
     <delete id="delete" parameterType="long">
          delete from sys_role where id = #{id}
     </delete>
+
+    <select id="findRoleByUserId" parameterType="long" resultType="com.zheng.domain.Role">
+         select * from sys_user_role ur,sys_role r where ur.roleId = r.id and userId = #{id}
+    </select>
 
 </mapper>

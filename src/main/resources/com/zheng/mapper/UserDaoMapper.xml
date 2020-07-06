@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zheng.mapper.UserDaoMapper">
+    <select id="findAll" resultType="com.zheng.domain.User">
+        select * from sys_user
+    </select>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.zheng.domain.User">
+        insert into sys_user values(#{id}, #{username}, #{email}, #{password}, #{phoneNum})
+    </insert>
+
+    <insert id="saveUserRoleRel">
+        <foreach collection="param2" item="rid" >
+            insert into sys_user_role(userId, roleId) values(#{param1}, #{rid})
+        </foreach>
+    </insert>
+
+    <delete id="delUserRoleRel" parameterType="long">
+        delete from sys_user_role where userId = #{id}
+    </delete>
+
+    <delete id="del" parameterType="long">
+        delete from sys_user where id = #{id}
+    </delete>
+
+</mapper>
